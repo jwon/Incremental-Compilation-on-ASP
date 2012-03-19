@@ -179,11 +179,24 @@ class GCCLikeToolchain(Toolchain):
                 + ["-o", ext_file]
                 )
 
-        from pytools.prefork import call
-        if debug:
-            print " ".join(cc_cmdline)
+	length = len(source_files[0])-len('module.cpp')
+	cache_dir = source_files[0][:length]
+        print "cache_dir", cache_dir
+        f = open(cache_dir+'makefile', 'w')
+        
+        f.write('all:\n')
+        f.write('\t'+" ".join(cc_cmdline))
+        f.close()
+        
+        #f.write('CC='+cc_cmdline[0])
 
-        result = call(cc_cmdline)
+	cmdline = ['make', '-f', cache_dir+'makefile']
+
+        from pytools.prefork import call
+        #if debug:
+            #print " ".join(cc_cmdline)
+
+        result = call(cmdline)
 
         if result != 0:
             import sys
