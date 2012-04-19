@@ -1,1 +1,1 @@
-Goal: Incremental compilation on ASPModules. If one ASPModule is changed, no need to recompile the other ASP Moduled that are changed. 
+Goal: Incremental compilation on ASPModules. If one ASPModule is changed, no need to recompile the other ASP Modules that are changed. 

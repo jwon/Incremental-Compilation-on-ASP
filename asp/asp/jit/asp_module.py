@@ -448,14 +448,12 @@ class ASPModule(object):
 
         return src
 
-class ASPMasterModule(ASPModule):
+class ASPMasterModule(object):
     """
     ASPSubModule is... 
     """
     
-    def __init__(self, specializer="default_specializer", cache_dir=None, use_cuda=False, use_cilk=False):
-        super(ASPModule, self).__init__()
-        
+    def __init__(self):
         self.moduleList = []
         
     def add(self, submodule):
