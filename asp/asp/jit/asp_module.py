@@ -311,6 +311,7 @@ class ASPBackend(object):
 
         return func
 
+
 class ASPModule(object):
     """
     ASPModule is the main coordination class for specializers.  A specializer creates an ASPModule to contain
