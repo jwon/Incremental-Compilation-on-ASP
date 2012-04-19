@@ -311,7 +311,6 @@ class ASPBackend(object):
 
         return func
 
-
 class ASPModule(object):
     """
     ASPModule is the main coordination class for specializers.  A specializer creates an ASPModule to contain
@@ -448,3 +447,22 @@ class ASPModule(object):
 
         return src
 
+class ASPMasterModule(ASPModule):
+    """
+    ASPSubModule is... 
+    """
+    
+    def __init__(self, specializer="default_specializer", cache_dir=None, use_cuda=False, use_cilk=False):
+        super(ASPModule, self).__init__()
+        
+        self.moduleList = []
+        
+    def add(self, submodule):
+        self.moduleList.append(submodule)
+        
+    def __getattr__(self, name):
+        for submodule in self.moduleList:
+            if name in submodule.specialized_functions:
+                return submodule.specialized_functions[name]
+        
+        raise AttributeError("No method %s found; did you add it to this ASPModule?" % name)
