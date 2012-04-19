@@ -12,6 +12,13 @@ class ArrayDoubler(object):
 
         import asp.jit.asp_module as asp_module
         mod = asp_module.ASPModule()
+        #submod1 = asp_module.ASPSubModule()
+        #submod1.add_function("double_in_c", rendered)
+        #submod2 = asp_module.ASPSubModule()
+        #submod2.add_function("double_in_blah", rendered2)
+        #mod.add(submod1)
+        #mod.add(submod2)
+        #return mod.double_in_c(arr)
         # remember, must specify function name when using a string
         mod.add_function("double_in_c", rendered)
         return mod.double_in_c(arr)
